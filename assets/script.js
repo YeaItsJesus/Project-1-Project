@@ -18,7 +18,7 @@ var searchTopPhonesByInterest = "http://phone-specs-api.azharimm.dev/top-by-inte
 //top_by_interest:{"endpoint":"/top-by-interest","example":"http://phone-specs-api.azharimm.dev/top-by-interest"}
 
 
-//Calls phoneSpecs API
+//Calls latestPhones API
 fetch(latestPhonesUrl)
   .then(function (response) {
     //Parses response into json
@@ -30,6 +30,23 @@ fetch(latestPhonesUrl)
     //Latest Phones
 
   });
+
+
+/*
+//Calls phoneBrands API
+fetch(phoneBrandsUrl)
+  .then(function (response) {
+    //Parses response into json
+    return response.json();
+  })
+  .then(function (data) {
+  //console log to review data received
+    console.log(data);
+    //Phones brand(s)
+
+  });
+*/
+
 
 /*
 //Calls phoneSpecs API
@@ -54,3 +71,37 @@ fetch(phoneSpecsUrl)
       });
   });
 */
+
+
+/*
+//Calls searchForPhone API
+fetch(searchForPhoneUrl)
+  .then(function (response) {
+    //Parses response into json
+    return response.json();
+  })
+  .then(function (data) {
+  //console log to review data received
+    console.log(data);
+    //Phone(s)
+
+  });
+*/
+
+
+/*
+//Calls searchTopPhonesByInterest API
+fetch(searchTopPhonesByInterestUrl)
+  .then(function (response) {
+    //Parses response into json
+    return response.json();
+  })
+  .then(function (data) {
+  //console log to review data received
+    console.log(data);
+    //Top phones by interest
+
+  });
+*/
+
+
