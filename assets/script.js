@@ -19,89 +19,98 @@ var searchTopPhonesByInterest = "http://phone-specs-api.azharimm.dev/top-by-inte
 
 
 //Calls latestPhones API
-fetch(latestPhonesUrl)
-  .then(function (response) {
-    //Parses response into json
-    return response.json();
-  })
-  .then(function (data) {
-  //console log to review data received
-    console.log(data);
-    //Latest Phones
+function getLatestPhones() {
+  fetch(latestPhonesUrl)
+    .then(function (response) {
+      //Parses response into json
+      return response.json();
+    })
+    .then(function (data) {
+    //console log to review data received
+      console.log(data);
+      //Latest Phones
 
   });
-
+};
 
 /*
 //Calls phoneBrands API
-fetch(phoneBrandsUrl)
-  .then(function (response) {
-    //Parses response into json
-    return response.json();
-  })
-  .then(function (data) {
-  //console log to review data received
-    console.log(data);
-    //Phones brand(s)
+function getLatestPhones() {
+  fetch(phoneBrandsUrl)
+    .then(function (response) {
+      //Parses response into json
+      return response.json();
+    })
+    .then(function (data) {
+    //console log to review data received
+      console.log(data);
+      //Phones brand(s)
 
-  });
+    });
+  };
 */
 
 
 /*
 //Calls phoneSpecs API
-fetch(phoneSpecsUrl)
-  .then(function (response) {
-    //Parses response into json
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    //phone specs
-    var specsUrl = data.data.phones[0].detail;
-    //Calls phone specs url
-    fetch(specsUrl)
-      .then(function (response) {
-        //parses response into json
-        return response.json();
-      })
-      .then(function (phoneSpecs) {
-        //log phone specs array
-        console.log(phoneSpecs);
-      });
-  });
+function getLatestPhones() {
+  fetch(phoneSpecsUrl)
+    .then(function (response) {
+      //Parses response into json
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      //phone specs
+      var specsUrl = data.data.phones[0].detail;
+      //Calls phone specs url
+      fetch(specsUrl)
+        .then(function (response) {
+          //parses response into json
+          return response.json();
+        })
+        .then(function (phoneSpecs) {
+          //log phone specs array
+          console.log(phoneSpecs);
+        });
+    });
+  };
 */
 
 
 /*
 //Calls searchForPhone API
-fetch(searchForPhoneUrl)
-  .then(function (response) {
-    //Parses response into json
-    return response.json();
-  })
-  .then(function (data) {
-  //console log to review data received
-    console.log(data);
-    //Phone(s)
+function getLatestPhones() {
+  fetch(searchForPhoneUrl)
+    .then(function (response) {
+      //Parses response into json
+      return response.json();
+    })
+    .then(function (data) {
+    //console log to review data received
+      console.log(data);
+      //Phone(s)
 
-  });
+    });
+    };
 */
 
 
 /*
 //Calls searchTopPhonesByInterest API
-fetch(searchTopPhonesByInterestUrl)
-  .then(function (response) {
-    //Parses response into json
-    return response.json();
-  })
-  .then(function (data) {
-  //console log to review data received
-    console.log(data);
-    //Top phones by interest
+function getLatestPhones() {
+  fetch(searchTopPhonesByInterestUrl)
+    .then(function (response) {
+      //Parses response into json
+      return response.json();
+    })
+    .then(function (data) {
+    //console log to review data received
+      console.log(data);
+      //Top phones by interest
 
-  });
+    });
+    };
 */
 
 
