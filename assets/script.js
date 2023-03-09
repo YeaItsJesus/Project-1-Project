@@ -1,21 +1,21 @@
 //API URLS
 
 var latestPhonesUrl = "http://phone-specs-api.azharimm.dev/latest";
-//latest:{"endpoint":"/latest","example":"http://phone-specs-api.azharimm.dev/latest"}
+//latest: Endpoint":"/latest", Example:"http://phone-specs-api.azharimm.dev/latest"
 
 var phoneBrandsUrl = "http://phone-specs-api.azharimm.dev/brands";
-//list_brands:{"endpoint":"/brands","example":"http://phone-specs-api.azharimm.dev/brands"}
+//list_brands: Endpoint:"/brands", Example":"http://phone-specs-api.azharimm.dev/brands"
 
 var phoneSpecsUrl =
   "http://phone-specs-api.azharimm.dev/search?query={phoneNameGoesHere";
-//phone_specs:{"endpoint":"/{phone_slug}","example":"http://phone-specs-api.azharimm.dev/apple_iphone_12_pro_max-10237"}
+//phone_specs: Endpoint:"/{phone_slug}" ,Example":"http://phone-specs-api.azharimm.dev/apple_iphone_12_pro_max-10237"
 
 var searchForPhoneUrl =
   "http://phone-specs-api.azharimm.dev/search?query={userInputGoesHere}";
-//search:{"endpoint":"/search","example":"http://phone-specs-api.azharimm.dev/search?query=Iphone 12 pro max"}
+//search: Endpoint:"/search", Example":"http://phone-specs-api.azharimm.dev/search?query=Iphone 12 pro max"
 
 var searchTopPhonesByInterest = "http://phone-specs-api.azharimm.dev/top-by-interest"
-//top_by_interest:{"endpoint":"/top-by-interest","example":"http://phone-specs-api.azharimm.dev/top-by-interest"}
+//top_by_interest: Endpoint:"/top-by-interest", Example":"http://phone-specs-api.azharimm.dev/top-by-interest"
 
 
 //Calls latestPhones API
