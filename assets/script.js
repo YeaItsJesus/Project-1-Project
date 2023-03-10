@@ -14,9 +14,9 @@ var searchForPhoneUrl =
   "http://phone-specs-api.azharimm.dev/search?query={userInputGoesHere}";
 //search: Endpoint:"/search", Example":"http://phone-specs-api.azharimm.dev/search?query=Iphone 12 pro max"
 
-var searchTopPhonesByInterest = "http://phone-specs-api.azharimm.dev/top-by-interest"
+var searchTopPhonesByInterest =
+  "http://phone-specs-api.azharimm.dev/top-by-interest";
 //top_by_interest: Endpoint:"/top-by-interest", Example":"http://phone-specs-api.azharimm.dev/top-by-interest"
-
 
 //Calls latestPhones API
 function getLatestPhones() {
@@ -26,12 +26,15 @@ function getLatestPhones() {
       return response.json();
     })
     .then(function (data) {
-    //console log to review data received
-      console.log(data);
-      //Latest Phones
+      //console log to review data received
+      console.log(data.data.phones);
+      //18 Latest Phones
+      //Each listed phones contains an image(phonesList[i].image) and phone name(phonesList[i].phone_name)
+      var phonesList = data.data.phones;
+    });
+}
 
-  });
-};
+getLatestPhones();
 
 /*
 //Calls phoneBrands API
@@ -49,7 +52,6 @@ function getLatestPhones() {
     });
   };
 */
-
 
 /*
 //Calls phoneSpecs API
@@ -77,7 +79,6 @@ function getLatestPhones() {
   };
 */
 
-
 /*
 //Calls searchForPhone API
 function getLatestPhones() {
@@ -95,7 +96,6 @@ function getLatestPhones() {
     };
 */
 
-
 /*
 //Calls searchTopPhonesByInterest API
 function getLatestPhones() {
@@ -112,5 +112,3 @@ function getLatestPhones() {
     });
     };
 */
-
-
