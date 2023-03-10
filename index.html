@@ -10,9 +10,9 @@
     <title>Peek-A-Phone</title>
   </head>
   <body class="bg-zinc-900">
-    <header>
-        <nav class="container flex justify-between  px-6 py-8 bg-zinc-600 rounded-sm">
-            <div class="hidden space-x-8 lg:flex">
+    <header class="">
+        <nav class="flex justify-between px-6 py-8 bg-zinc-600 rounded-sm w-full">
+            <div class="hidden lg:flex md:absolute">
                 <a href="#">Menu 1</a>
                 <a href="#">Menu 2</a>
                 <a href="#">Menu 3</a>
@@ -28,7 +28,7 @@
             <div>
               <h1 class="text-1xl font-medium text-slate-300">Peek-A-Phone</h3>
             </div>
-            <form action="" class="relative">
+            <form action="" class="relative ">
                 <input type="search" id="search" class="peer cursor-pointer relative z-10 w-12 h-7 rounded-full bg-transparent outline-none border text-slate-300 focus:w-full focus:border-slate-300 focus:cursor-text focus:pl-9">
                 <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-slate-300 px-3.5 peer-focus:slate-300  peer-focus:stroke-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -40,18 +40,32 @@
             <h1 class="text-slate-300 text-3xl">Latest</h1>
         </div>
 
-        <div class="px-8 py-6 mx-2 bg-zinc-600 text-slate-300 rounded-md">
-            <img class=""src="https://cdn.pixabay.com/photo/2018/01/28/10/59/internet-3113279_960_720.jpg" alt="">
-            <div class="">
-                <h2 class="my-3 py-1 border-b">Specifications:</h2>
-                <p>Release:</p>
-                <p>Main Camera(s):</p>
-                <p>Selfie Camera:</p>
-                <p>Colors:</p>
-                <p class="pb-4">Storage:</p>
+        <div class="px-4 py-4 mx-2 bg-zinc-600 text-slate-300 rounded-md md:flex md:p-3 md:relative">
+            <img class="object-cover flex md:w-2/12 md:pb-4"src="https://cdn.pixabay.com/photo/2018/01/28/10/59/internet-3113279_960_720.jpg" alt="">
+            <div class="md:px-5 md:w-full">
+                <h2 class="my-3 py-1 border-b md:pt-0 mt-0 w-full">Specifications:</h2>
+                <p class="md:pb-1">Release:</p>
+                <p class="md:pb-1">Main Camera(s):</p>
+                <p class="md:pb-1">Selfie Camera:</p>
+                <p class="md:pb-1">Colors:</p>
+                <p class="md:pb-6">Storage:</p>
             </div>
-            <a class="text-blue-400 underline" href="#">Reviews</a>
+            <a class="text-blue-400 underline md:absolute md:bottom-0 md:py-2 " href="#">Reviews</a>
         </div>
+
+        
+      <div class="px-4 py-4 mx-2 my-1 bg-zinc-600 text-slate-300 rounded-md md:flex md:p-3 md:relative">
+          <img class="object-cover flex md:w-2/12 md:pb-4"src="https://cdn.pixabay.com/photo/2018/01/28/10/59/internet-3113279_960_720.jpg" alt="">
+          <div class="md:px-5 md:w-full">
+              <h2 class="my-3 py-1 border-b md:pt-0 mt-0 w-full">Specifications:</h2>
+              <p class="md:pb-1">Release:</p>
+              <p class="md:pb-1">Main Camera(s):</p>
+              <p class="md:pb-1">Selfie Camera:</p>
+              <p class="md:pb-1">Colors:</p>
+              <p class="md:pb-6">Storage:</p>
+          </div>
+          <a class="text-blue-400 underline md:absolute md:bottom-0 md:py-2 " href="#">Reviews</a>
+      </div>
     <footer></footer>
 
     <script
