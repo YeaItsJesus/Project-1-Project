@@ -11,7 +11,7 @@ var phoneSpecsUrl =
 //phone_specs: Endpoint:"/{phone_slug}" ,Example":"http://phone-specs-api.azharimm.dev/apple_iphone_12_pro_max-10237"
 
 var searchForPhoneUrl =
-  "http://phone-specs-api.azharimm.dev/search?query={userInputGoesHere}";
+  "http://phone-specs-api.azharimm.dev/search?query={user input goes here}";
 //search: Endpoint:"/search", Example":"http://phone-specs-api.azharimm.dev/search?query=Iphone 12 pro max"
 
 var searchTopPhonesByInterestUrl =
@@ -79,22 +79,26 @@ function getLatestPhones() {
   };
 */
 
-/*
 //Calls searchForPhone API
-function getLatestPhones() {
+function searchForPhone() {
   fetch(searchForPhoneUrl)
     .then(function (response) {
       //Parses response into json
       return response.json();
     })
     .then(function (data) {
-    //console log to review data received
-      console.log(data);
-      //Phone(s)
-
+      //console log to review data received
+      //console.log(data);
+      //Phone
+      var phone = data.data.phones[0];
+      var phoneName = phone.phone_name;
+      var phoneImage = phone.image;
+      var phoneBrand = phone.brand;
+      //Search results return (brand, specs link "detail", image, phone_name)
     });
-    };
-*/
+}
+
+searchForPhone();
 
 //Calls searchTopPhonesByInterest API
 function getTopPhones() {
@@ -105,7 +109,7 @@ function getTopPhones() {
     })
     .then(function (data) {
       //console log to review data received
-      console.log(data);
+      //console.log(data);
       //Top By Daily Interest Phones (10 phone names listed)
       var phonesList = data.data.phones;
     });
