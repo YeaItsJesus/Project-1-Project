@@ -14,7 +14,7 @@ var searchForPhoneUrl =
   "http://phone-specs-api.azharimm.dev/search?query={userInputGoesHere}";
 //search: Endpoint:"/search", Example":"http://phone-specs-api.azharimm.dev/search?query=Iphone 12 pro max"
 
-var searchTopPhonesByInterest =
+var searchTopPhonesByInterestUrl =
   "http://phone-specs-api.azharimm.dev/top-by-interest";
 //top_by_interest: Endpoint:"/top-by-interest", Example":"http://phone-specs-api.azharimm.dev/top-by-interest"
 
@@ -27,7 +27,7 @@ function getLatestPhones() {
     })
     .then(function (data) {
       //console log to review data received
-      console.log(data.data.phones);
+      //console.log(data.data.phones);
       //18 Latest Phones
       //Each listed phones contains an image(phonesList[i].image) and phone name(phonesList[i].phone_name)
       var phonesList = data.data.phones;
@@ -96,19 +96,19 @@ function getLatestPhones() {
     };
 */
 
-/*
 //Calls searchTopPhonesByInterest API
-function getLatestPhones() {
+function getTopPhones() {
   fetch(searchTopPhonesByInterestUrl)
     .then(function (response) {
       //Parses response into json
       return response.json();
     })
     .then(function (data) {
-    //console log to review data received
+      //console log to review data received
       console.log(data);
-      //Top phones by interest
-
+      //Top By Daily Interest Phones (10 phone names listed)
+      var phonesList = data.data.phones;
     });
-    };
-*/
+}
+
+getTopPhones();
