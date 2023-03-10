@@ -7,11 +7,11 @@ var phoneBrandsUrl = "http://phone-specs-api.azharimm.dev/brands";
 //list_brands: Endpoint:"/brands", Example":"http://phone-specs-api.azharimm.dev/brands"
 
 var phoneSpecsUrl =
-  "http://phone-specs-api.azharimm.dev/search?query={phoneNameGoesHere";
-//phone_specs: Endpoint:"/{phone_slug}" ,Example":"http://phone-specs-api.azharimm.dev/apple_iphone_12_pro_max-10237"
+  "http://phone-specs-api.azharimm.dev/apple_iphone_13_mini-11104";
+//phone_specs: Endpoint:"/{phone_slug}{apple_iphone_13_mini-11104}" ,Example":"http://phone-specs-api.azharimm.dev/apple_iphone_12_pro_max-10237"
 
 var searchForPhoneUrl =
-  "http://phone-specs-api.azharimm.dev/search?query={user input goes here}";
+  "http://phone-specs-api.azharimm.dev/search?query={name of searched phone goes here}";
 //search: Endpoint:"/search", Example":"http://phone-specs-api.azharimm.dev/search?query=Iphone 12 pro max"
 
 var searchTopPhonesByInterestUrl =
@@ -34,7 +34,7 @@ function getLatestPhones() {
     });
 }
 
-getLatestPhones();
+//getLatestPhones();
 
 /*
 //Calls phoneBrands API
@@ -53,31 +53,33 @@ function getLatestPhones() {
   };
 */
 
-/*
 //Calls phoneSpecs API
-function getLatestPhones() {
+function getPhoneSpecs() {
   fetch(phoneSpecsUrl)
     .then(function (response) {
       //Parses response into json
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      //console.log(data);
       //phone specs
-      var specsUrl = data.data.phones[0].detail;
-      //Calls phone specs url
-      fetch(specsUrl)
-        .then(function (response) {
-          //parses response into json
-          return response.json();
-        })
-        .then(function (phoneSpecs) {
-          //log phone specs array
-          console.log(phoneSpecs);
-        });
+      var phoneBrand = data.data.brand;
+      var phoneName = data.data.phone_name;
+      var releaseDate = data.data.release_date;
+      var storageOptions = data.data.storage;
+      var thumbnail = data.data.thumbnail;
+      var screenSize =
+        data.data.specifications[3].specs[1].val[0].split(",")[0];
+      var mainCamera = data.data.specifications[6].specs[0].val[0];
+      var frontCamera = data.data.specifications[7].specs[0].val[0];
+      var colorOptions = data.data.specifications[12].specs[0].val[0];
+      var phonePrice =
+        data.data.specifications[12].specs[4].val[0].split("/")[0];
+      //console.log(phonePrice)
     });
-  };
-*/
+}
+
+//getPhoneSpecs();
 
 //Calls searchForPhone API
 function searchForPhone() {
@@ -94,11 +96,13 @@ function searchForPhone() {
       var phoneName = phone.phone_name;
       var phoneImage = phone.image;
       var phoneBrand = phone.brand;
+      var phoneSlug = phone.slug;
+
       //Search results return (brand, specs link "detail", image, phone_name)
     });
 }
 
-searchForPhone();
+//searchForPhone();
 
 //Calls searchTopPhonesByInterest API
 function getTopPhones() {
@@ -115,4 +119,4 @@ function getTopPhones() {
     });
 }
 
-getTopPhones();
+//getTopPhones();
