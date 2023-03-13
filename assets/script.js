@@ -34,7 +34,6 @@ function getLatestPhones() {
             return response.json();
           })
           .then(function (data) {
-            console.log(data);
             //Get handle on phone specs
             var phoneBrand = data.data.brand;
             var phoneName = data.data.phone_name;
@@ -59,14 +58,11 @@ function getLatestPhones() {
               frontCamera: frontCamera,
               colorOptions: colorOptions,
             });
-            console.log("---------------");
-            console.log(thumbnail);
           });
       });
 
       // Wait for all the promises to resolve before updating the HTML
       Promise.all(promises).then(function () {
-        console.log("phones:", phones);
         //Update HTML with phone specs
         for (i = 0; i < 10; i++) {
           var phoneDiv = $("#phone" + (i + 1));
@@ -91,16 +87,10 @@ function getLatestPhones() {
           phoneDiv
             .find("#screen-size")
             .text("Screen Size: " + phones[i].screenSize);
-          console.log("thumbnail:", phones[i].thumbnail);
+          
           phoneDiv.find("#phone-thumbnail").attr("src", phones[i].thumbnail);
-          console.log("phoneDiv:", phoneDiv);
         }
-
         console.log(phones);
-        console.log(
-          "Thumbnail URLs:",
-          phones.map((phone) => phone.thumbnail)
-        );
       });
     });
 }
@@ -227,4 +217,5 @@ searchBar.submit(function (event) {
             data.data.specifications[12].specs[4].val[0].split("/")[0];
         });
     });
+    
 });
