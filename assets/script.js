@@ -10,7 +10,6 @@ var searchTopPhonesByInterestUrl =
   "http://phone-specs-api.azharimm.dev/top-by-interest";
 //top_by_interest: Endpoint:"/top-by-interest", Example":"http://phone-specs-api.azharimm.dev/top-by-interest"
 
-//Calls latestPhones API
 function getLatestPhones() {
   fetch(latestPhonesUrl)
     .then(function (response) {
@@ -22,13 +21,14 @@ function getLatestPhones() {
       //Each listed phones contains an image(phonesList[i].image) and phone name(phonesList[i].phone_name and specs (phonesList[i].detail) and phone slug (phonesList[i].slug))
       var phonesList = data.data.phones;
       //console.log(phonesList);
-      for (i = 0; i < 10; i++) {
-        var phoneName = phonesList[i].phone_name;
-        var phoneImage = phonesList[i].image;
-        var phoneSpecs = phonesList[i].detail;
-        var phoneSlug = phonesList[i].slug;
-        //Calls API to get phone specs
-        fetch(`http://phone-specs-api.azharimm.dev/${phoneSlug}`)
+      return phonesList;
+    })
+    .then(function (phonesList) {
+      var phones = [];
+
+      // Create an array of promises that will resolve with the phone specs data
+      var promises = phonesList.slice(0, 10).map(function (phone) {
+        return fetch(`http://phone-specs-api.azharimm.dev/${phone.slug}`)
           .then(function (response) {
             //Parses response into json
             return response.json();
@@ -48,9 +48,60 @@ function getLatestPhones() {
             var colorOptions = data.data.specifications[12].specs[0].val[0];
             //var phonePrice = data.data.specifications[12].specs[4].val[0].split("/")[0];
 
+            phones.push({
+              phoneBrand: phoneBrand,
+              phoneName: phoneName,
+              releaseDate: releaseDate,
+              storageOptions: storageOptions,
+              thumbnail: thumbnail,
+              screenSize: screenSize,
+              mainCamera: mainCamera,
+              frontCamera: frontCamera,
+              colorOptions: colorOptions,
+            });
             console.log("---------------");
+            console.log(thumbnail);
           });
-      }
+      });
+
+      // Wait for all the promises to resolve before updating the HTML
+      Promise.all(promises).then(function () {
+        console.log("phones:", phones);
+        //Update HTML with phone specs
+        for (i = 0; i < 10; i++) {
+          var phoneDiv = $("#phone" + (i + 1));
+          phoneDiv
+            .find("#phone-name")
+            .text(phones[i].phoneBrand + " " + phones[i].phoneName);
+          phoneDiv
+            .find("#release-date")
+            .text("Release Date: " + phones[i].releaseDate);
+          phoneDiv
+            .find("#main-camera")
+            .text("Main Camera(s): " + phones[i].mainCamera);
+          phoneDiv
+            .find("#selfie-camera")
+            .text("Selfie Camera(s): " + phones[i].frontCamera);
+          phoneDiv
+            .find("#color-options")
+            .text("Color Options: " + phones[i].colorOptions);
+          phoneDiv
+            .find("#storage-options")
+            .text("Storage Options: " + phones[i].storageOptions);
+          phoneDiv
+            .find("#screen-size")
+            .text("Screen Size: " + phones[i].screenSize);
+          console.log("thumbnail:", phones[i].thumbnail);
+          phoneDiv.find("#phone-thumbnail").attr("src", phones[i].thumbnail);
+          console.log("phoneDiv:", phoneDiv);
+        }
+
+        console.log(phones);
+        console.log(
+          "Thumbnail URLs:",
+          phones.map((phone) => phone.thumbnail)
+        );
+      });
     });
 }
 
@@ -58,7 +109,7 @@ getLatestPhones();
 
 /*
 //Calls phoneBrands API
-function getLatestPhones() {
+function getPhoneBrands() {
   fetch(phoneBrandsUrl)
     .then(function (response) {
       //Parses response into json
