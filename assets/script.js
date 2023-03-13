@@ -116,3 +116,13 @@ function getTopPhones() {
 }
 
 getTopPhones();
+
+
+//Turn hamburger menu in the top left into a button. Create an event listener for the hamburger button. 
+//This event listener should contain a function that toggles the visibility of the dropdown menu.
+
+
+
+var hamburgerMenu = document.getElementById("hamburgermenu")
+
+hamburgerMenu.addEventListener('click', console.log('hamburger was clicked'))
