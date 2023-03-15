@@ -10,6 +10,8 @@ var searchTopPhonesByInterestUrl =
   "http://phone-specs-api.azharimm.dev/top-by-interest";
 //top_by_interest: Endpoint:"/top-by-interest", Example":"http://phone-specs-api.azharimm.dev/top-by-interest"
 
+var displayContainerTitleEl = $("#displayContainerTitle");
+
 function getLatestPhones() {
   fetch(latestPhonesUrl)
     .then(function (response) {
@@ -27,7 +29,7 @@ function getLatestPhones() {
 }
 
 function renderPhoneList(phonesList) {
-  $("#latest-phones").html("");
+  $("#latestPhones-container").html("");
   var phones = [];
 
   // Create an array of promises that will resolve with the phone specs data
@@ -69,30 +71,55 @@ function renderPhoneList(phonesList) {
   Promise.all(promises).then(function () {
     //Update HTML with phone specs
     for (i = 0; i < promises.length; i++) {
-      var phoneDiv = $("#phone" + (i + 1));
-      phoneDiv
-        .find("#phone-name")
+      var latestPhonesContainer = $("#latestPhones-container");
+
+      phoneContainerEl = $("<div>").addClass(
+        "p-4 mx-2 bg-zinc-600 text-slate-300 rounded-md md:flex "
+      );
+      imgEl = $("<img>")
+        .addClass("object-contain mx-auto rounded-md md:w-1/4")
+        .attr("src", phones[i].thumbnail);
+      specsContainerEl = $("<div>").addClass("py-3 space-y-3 md:px-5 w-full");
+      deviceNameEl = $("<h1>")
+        .addClass("text-center text-4xl md:text-5xl")
         .text(phones[i].phoneBrand + " " + phones[i].phoneName);
-      phoneDiv
-        .find("#release-date")
+      specsTitleEl = $("<h2>")
+        .addClass("border-b text-2xl md:text-3xl")
+        .text("Specifications:");
+      releaseDateEl = $("<p>")
+        .addClass("text-1xl md:text-2xl")
         .text("Release Date: " + phones[i].releaseDate);
-      phoneDiv
-        .find("#main-camera")
+      mainCameraEl = $("<p>")
+        .addClass("text-1xl md:text-2xl")
         .text("Main Camera(s): " + phones[i].mainCamera);
-      phoneDiv
-        .find("#selfie-camera")
+      frontCameraEl = $("<p>")
+        .addClass("text-1xl md:text-2xl")
         .text("Selfie Camera(s): " + phones[i].frontCamera);
-      phoneDiv
-        .find("#color-options")
+      colorOptionsEl = $("<p>")
+        .addClass("text-1xl md:text-2xl")
         .text("Color Options: " + phones[i].colorOptions);
-      phoneDiv
-        .find("#storage-options")
+      storageOptionsEl = $("<p>")
+        .addClass("text-1xl md:text-2xl")
         .text("Storage Options: " + phones[i].storageOptions);
-      phoneDiv
-        .find("#screen-size")
+      screenSizeEl = $("<p>")
+        .addClass("text-1xl md:text-2xl")
         .text("Screen Size: " + phones[i].screenSize);
 
-      phoneDiv.find("#phone-thumbnail").attr("src", phones[i].thumbnail);
+      latestPhonesContainer.append(
+        phoneContainerEl.append(
+          imgEl,
+          specsContainerEl.append(
+            deviceNameEl,
+            specsTitleEl,
+            releaseDateEl,
+            mainCameraEl,
+            frontCameraEl,
+            colorOptionsEl,
+            storageOptionsEl,
+            screenSizeEl
+          )
+        )
+      );
     }
     console.log(phones);
   });
@@ -122,64 +149,10 @@ var latestPhonesLink = $("#latestPhonesLink");
 
 latestPhonesLink.on("click", () => {
   getLatestPhones();
+  displayContainerTitleEl.text("Latest Phones Announced:");
 });
 
 getLatestPhones();
-
-/*
-//Calls phoneBrands API
-function getPhoneBrands() {
-  fetch(phoneBrandsUrl)
-    .then(function (response) {
-      //Parses response into json
-      return response.json();
-    })
-    .then(function (data) {
-    //console log to review data received
-      console.log(data);
-      //Phones brand(s)
-
-    });
-  };
-*/
-
-/*
-//Calls phoneSpecs API
-function getPhoneSpecs() {
-  fetch(phoneSpecsUrl)
-    .then(function (response) {
-      //Parses response into json
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      //phone specs
-      var specsUrl = data.data.phones[0].detail;
-      //Calls phone specs url
-      fetch(specsUrl)
-        .then(function (response) {
-          //parses response into json
-          return response.json();
-        })
-        .then(function (data) {
-          console.log(data);
-          //phone specs
-          var phoneBrand = data.data.brand;
-          var phoneName = data.data.phone_name;
-          var releaseDate = data.data.release_date;
-          var storageOptions = data.data.storage;
-          var thumbnail = data.data.thumbnail;
-          var screenSize =
-            data.data.specifications[3].specs[1].val[0].split(",")[0];
-          var mainCamera = data.data.specifications[6].specs[0].val[0];
-          var frontCamera = data.data.specifications[7].specs[0].val[0];
-          var colorOptions = data.data.specifications[12].specs[0].val[0];
-          var phonePrice =
-            data.data.specifications[12].specs[4].val[0].split("/")[0];
-        });
-    });
-  };
-*/
 
 //Calls searchTopPhonesByInterest API
 function getTopPhones() {
@@ -196,6 +169,7 @@ function getTopPhones() {
       return phonesList;
     })
     .then(renderPhoneList);
+  displayContainerTitleEl.text("Top Phones By Interest:");
 }
 
 //IMEI API
@@ -228,6 +202,7 @@ var IMEIsearchField = $("#IMEIsearch");
 
 IMEIsearchBar.submit(function (event) {
   event.preventDefault();
+
   var userIMEI = IMEIsearchField.val();
   getIMEIinfo(userIMEI)
     .then(function (phoneModel) {
@@ -246,6 +221,7 @@ IMEIsearchBar.submit(function (event) {
       var phone = data.data.phones[0];
       renderPhoneList([phone]);
       IMEIsearchField.val("");
+      displayContainerTitleEl.text("IMEI Results:");
     });
 });
 
@@ -255,6 +231,7 @@ var searchField = $("#search");
 
 searchBar.submit(function (event) {
   event.preventDefault(); // prevent default behavior of form submission
+
   //Get searchfield value
   var userInput = searchField.val();
   //Calls searchForPhone API
@@ -267,5 +244,6 @@ searchBar.submit(function (event) {
       //Phone
       var phone = data.data.phones[0];
       renderPhoneList([phone]);
+      displayContainerTitleEl.text("Phone Results:");
     });
 });
