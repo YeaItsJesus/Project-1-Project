@@ -5,6 +5,7 @@
 <strong>Introducing Peek A Phone!</strong><br>
 The ultimate web application for staying up to date on the latest smartphones.<br>
 With Peek A Phone, you can easily navigate through the latest announced smartphones and explore their hardware specifications.<br>
+<br>
 Wondering which smartphones are currently trending? Simply click on the 'Top Phones By Interest' section in the nav menu to find out!<br>
 
 <img src="https://media.giphy.com/media/Aap0ZBjtxF6gAIzy5U/giphy.gif"> <img src="https://media.giphy.com/media/d3iklV9WnNdvfvNMR8/giphy.gif">
