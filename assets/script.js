@@ -108,6 +108,22 @@ hamburgerMenu.on("click", () => {
   console.log("The nav menu was clicked!");
 });
 
+//Top Phones Link click event listener
+
+var topPhonesLink = $("#topPhonesLink");
+
+topPhonesLink.on("click", () => {
+  getTopPhones();
+});
+
+//Latest Phones Link click event listener
+
+var latestPhonesLink = $("#latestPhonesLink");
+
+latestPhonesLink.on("click", () => {
+  getLatestPhones();
+});
+
 getLatestPhones();
 
 /*
@@ -177,7 +193,9 @@ function getTopPhones() {
       //console.log(data);
       //Top By Daily Interest Phones (10 phone names listed)
       var phonesList = data.data.phones;
-    });
+      return phonesList;
+    })
+    .then(renderPhoneList);
 }
 
 //getTopPhones();
