@@ -5,19 +5,20 @@
 <strong>Introducing Peek A Phone!</strong><br>
 The ultimate web application for staying up to date on the latest smartphones.<br>
 With Peek A Phone, you can easily navigate through the latest announced smartphones and explore their hardware specifications.<br>
+<br>
 Wondering which smartphones are currently trending? Simply click on the 'Top Phones By Interest' section in the nav menu to find out!<br>
 
 <img src="https://media.giphy.com/media/Aap0ZBjtxF6gAIzy5U/giphy.gif"> <img src="https://media.giphy.com/media/d3iklV9WnNdvfvNMR8/giphy.gif">
 
 <br>
 Peek A Phone also offers a convenient way to search for your device's information.<br>
-With the 'Search By IMEI' feature, you can quickly access your device's image, brand, name, and hardware specifications by entering your device's IMEI.<br>
+With the <strong>'Search By IMEI'</strong> feature, you can quickly access your device's image, brand, name, and hardware specifications by entering your device's IMEI.<br>
+<br>
 The best part? Your IMEI searches are automatically saved, so you can easily keep track of your device history.<br>
 Just click on the IMEI Search History link in the nav menu to access them.<br>
 <br>
 
 <img src="https://media.giphy.com/media/qYd7WwUh73YoXT5sWK/giphy.gif"> 
-<br>
 <br>
 
 <strong>Don't get left behind! Stay ahead of the curve with Peek A Phone, the easy-to-use web application that keeps you in the know about the latest smartphones and their specs.</strong><br>
@@ -29,12 +30,22 @@ https://YeaItsJesus.github.io/thisIsPeekAPhone/
 <br>
 <br>
 
+## Technologies
+
+The following technologies were used to develop Peek-A-Phone:<br>
+<br>
+<strong>Languages</strong> - HTML5, JavaScript
+
+<strong>Frameworks</strong> - Tailwind CSS Framework
+
+<strong>Libraries</strong> - jQuery Library
+<br>
+<br>
+
 ## License
 
 MIT License<br>
-<br>
 Copyright (c) 2022 Omar4589<br>
-<br>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights

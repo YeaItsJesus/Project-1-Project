@@ -1,13 +1,13 @@
 //API URLS
 
-var latestPhonesUrl = "http://phone-specs-api.azharimm.dev/latest";
+var latestPhonesUrl = "https://phone-specs-api.azharimm.dev/latest";
 //latest: Endpoint":"/latest", Example:"http://phone-specs-api.azharimm.dev/latest"
 
-var phoneBrandsUrl = "http://phone-specs-api.azharimm.dev/brands";
+var phoneBrandsUrl = "https://phone-specs-api.azharimm.dev/brands";
 //list_brands: Endpoint:"/brands", Example":"http://phone-specs-api.azharimm.dev/brands"
 
 var searchTopPhonesByInterestUrl =
-  "http://phone-specs-api.azharimm.dev/top-by-interest";
+  "https://phone-specs-api.azharimm.dev/top-by-interest";
 //top_by_interest: Endpoint:"/top-by-interest", Example":"http://phone-specs-api.azharimm.dev/top-by-interest"
 
 var displayContainerTitleEl = $("#displayContainerTitle");
@@ -33,7 +33,7 @@ function renderPhoneList(phonesList) {
 
   // Create an array of promises that will resolve with the phone specs data
   var promises = phonesList.slice(0, 10).map(function (phone) {
-    return fetch(`http://phone-specs-api.azharimm.dev/${phone.slug}`)
+    return fetch(`https://phone-specs-api.azharimm.dev/${phone.slug}`)
       .then(function (response) {
         //Parses response into json
         return response.json();
@@ -203,7 +203,7 @@ IMEIsearchBar.submit(function (event) {
   getIMEIinfo(userIMEI)
     .then(function (phoneModel) {
       return fetch(
-        `http://phone-specs-api.azharimm.dev/search?query=${phoneModel}`
+        `https://phone-specs-api.azharimm.dev/search?query=${phoneModel}`
       );
     })
     .then(function (response) {
@@ -238,7 +238,7 @@ searchBar.submit(function (event) {
   //Get searchfield value
   var userInput = searchField.val();
   //Calls searchForPhone API
-  fetch(`http://phone-specs-api.azharimm.dev/search?query=${userInput}`)
+  fetch(`https://phone-specs-api.azharimm.dev/search?query=${userInput}`)
     .then(function (response) {
       //Parses response into json
       return response.json();
@@ -260,7 +260,7 @@ IMEIHistoryLink.on("click", () => {
     getIMEIinfo(IMEISearches[i])
       .then(function (phoneModel) {
         return fetch(
-          `http://phone-specs-api.azharimm.dev/search?query=${phoneModel}`
+          `https://phone-specs-api.azharimm.dev/search?query=${phoneModel}`
         );
       })
       .then(function (response) {
