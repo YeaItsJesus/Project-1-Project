@@ -29,12 +29,22 @@ https://YeaItsJesus.github.io/thisIsPeekAPhone/
 <br>
 <br>
 
+## Technologies
+
+The following technologies were used to develop Peek-A-Phone:<br>
+<br>
+<strong>Languages</strong> - HTML5, JavaScript
+
+<strong>Frameworks</strong> - Tailwind CSS Framework
+
+<strong>Libraries</strong> - jQuery Library
+<br>
+<br>
+
 ## License
 
 MIT License<br>
-<br>
 Copyright (c) 2022 Omar4589<br>
-<br>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
