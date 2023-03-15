@@ -272,7 +272,7 @@ IMEIHistoryLink.on("click", () => {
         var phone = data.data.phones[0];
         renderPhoneList([phone]);
         IMEIsearchField.val("");
-        displayContainerTitleEl.text("IMEI History:");
+        displayContainerTitleEl.text("IMEI Searches:");
       });
   }
 });
