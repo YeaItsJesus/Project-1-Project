@@ -22,7 +22,6 @@ function getLatestPhones() {
       //18 Latest Phones
       //Each listed phones contains an image(phonesList[i].image) and phone name(phonesList[i].phone_name and specs (phonesList[i].detail) and phone slug (phonesList[i].slug))
       var phonesList = data.data.phones;
-      //console.log(phonesList);
       return phonesList;
     })
     .then(renderPhoneList);
@@ -121,7 +120,6 @@ function renderPhoneList(phonesList) {
         )
       );
     }
-    console.log(phones);
   });
 }
 
@@ -132,7 +130,6 @@ var menuLinks = $("#nav-menu");
 
 hamburgerMenu.on("click", () => {
   menuLinks.toggle();
-  console.log("The nav menu was clicked!");
 });
 
 //Top Phones Link click event listener
@@ -162,8 +159,6 @@ function getTopPhones() {
       return response.json();
     })
     .then(function (data) {
-      //console log to review data received
-      //console.log(data);
       //Top By Daily Interest Phones (10 phone names listed)
       var phonesList = data.data.phones;
       return phonesList;
@@ -199,6 +194,7 @@ function getIMEIinfo(userIMEI) {
 //Search phone IMEI
 var IMEIsearchBar = $("#IMEIsearchBar");
 var IMEIsearchField = $("#IMEIsearch");
+var IMEISearches = JSON.parse(localStorage.getItem("imeiSearches")) || [];
 
 IMEIsearchBar.submit(function (event) {
   event.preventDefault();
@@ -215,13 +211,20 @@ IMEIsearchBar.submit(function (event) {
       return response.json();
     })
     .then(function (data) {
-      //console log to review data received
-      console.log(data);
       //Phone
       var phone = data.data.phones[0];
       renderPhoneList([phone]);
-      IMEIsearchField.val("");
+
       displayContainerTitleEl.text("IMEI Results:");
+      if (userIMEI === "") {
+        return;
+      } else {
+        if (IMEISearches.indexOf(userIMEI) === -1) {
+          IMEISearches.push(userIMEI);
+          localStorage.setItem("imeiSearches", JSON.stringify(IMEISearches));
+        }
+      }
+      IMEIsearchField.val("");
     });
 });
 
@@ -246,4 +249,30 @@ searchBar.submit(function (event) {
       renderPhoneList([phone]);
       displayContainerTitleEl.text("Phone Results:");
     });
+});
+
+//IMEI History link click listener
+var IMEIHistoryLink = $("#IMEIHistoryLink");
+
+IMEIHistoryLink.on("click", () => {
+  var IMEISearches = JSON.parse(localStorage.getItem("imeiSearches")) || [];
+  for (i = 0; i < IMEISearches.length; i++) {
+    getIMEIinfo(IMEISearches[i])
+      .then(function (phoneModel) {
+        return fetch(
+          `http://phone-specs-api.azharimm.dev/search?query=${phoneModel}`
+        );
+      })
+      .then(function (response) {
+        //Parses response into json
+        return response.json();
+      })
+      .then(function (data) {
+        //Phone
+        var phone = data.data.phones[0];
+        renderPhoneList([phone]);
+        IMEIsearchField.val("");
+        displayContainerTitleEl.text("IMEI History:");
+      });
+  }
 });
