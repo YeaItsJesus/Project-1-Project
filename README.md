@@ -11,13 +11,13 @@ Wondering which smartphones are currently trending? Simply click on the 'Top Pho
 
 <br>
 Peek A Phone also offers a convenient way to search for your device's information.<br>
-With the 'Search By IMEI' feature, you can quickly access your device's image, brand, name, and hardware specifications by entering your device's IMEI.<br>
+With the <strong>'Search By IMEI'</strong> feature, you can quickly access your device's image, brand, name, and hardware specifications by entering your device's IMEI.<br>
+<br>
 The best part? Your IMEI searches are automatically saved, so you can easily keep track of your device history.<br>
 Just click on the IMEI Search History link in the nav menu to access them.<br>
 <br>
 
 <img src="https://media.giphy.com/media/qYd7WwUh73YoXT5sWK/giphy.gif"> 
-<br>
 <br>
 
 <strong>Don't get left behind! Stay ahead of the curve with Peek A Phone, the easy-to-use web application that keeps you in the know about the latest smartphones and their specs.</strong><br>
