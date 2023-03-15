@@ -34,13 +34,24 @@ https://YeaItsJesus.github.io/thisIsPeekAPhone/
 
 The following technologies were used to develop Peek-A-Phone:<br>
 <br>
-<strong>Languages</strong> - HTML5, JavaScript
+<strong>Languages</strong>
 
-<strong>Frameworks</strong> - Tailwind CSS Framework
+- HTML5, JavaScript
 
-<strong>Libraries</strong> - jQuery Library
-<br>
-<br>
+<strong>Frameworks</strong>
+
+- Tailwind CSS Framework
+
+<strong>Libraries</strong>
+
+- jQuery Library
+
+<strong>APIs</strong>
+
+- Phone specifications API (https://github.com/azharimm/phone-specs-api)<br>
+- Kelpom IMEI Checker (https://rapidapi.com/Kelpom/api/kelpom-imei-checker1/)
+  <br>
+  <br>
 
 ## License
 
