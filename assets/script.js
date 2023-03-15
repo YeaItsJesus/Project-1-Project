@@ -198,12 +198,61 @@ function getTopPhones() {
     .then(renderPhoneList);
 }
 
-//getTopPhones();
+//IMEI API
 
+function getIMEIinfo(userIMEI) {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "0aee9a94d4mshb908c01c8187bd5p105898jsn5186d0a850dc",
+      "X-RapidAPI-Host": "kelpom-imei-checker1.p.rapidapi.com",
+    },
+  };
+
+  return fetch(
+    `https://kelpom-imei-checker1.p.rapidapi.com/api?service=model&imei=${userIMEI}`,
+    options
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var phoneModel = data.model.model_nb;
+      return phoneModel;
+    });
+}
+
+//Search phone IMEI
+var IMEIsearchBar = $("#IMEIsearchBar");
+var IMEIsearchField = $("#IMEIsearch");
+
+IMEIsearchBar.submit(function (event) {
+  event.preventDefault();
+  var userIMEI = IMEIsearchField.val();
+  getIMEIinfo(userIMEI)
+    .then(function (phoneModel) {
+      return fetch(
+        `http://phone-specs-api.azharimm.dev/search?query=${phoneModel}`
+      );
+    })
+    .then(function (response) {
+      //Parses response into json
+      return response.json();
+    })
+    .then(function (data) {
+      //console log to review data received
+      console.log(data);
+      //Phone
+      var phone = data.data.phones[0];
+      renderPhoneList([phone]);
+      IMEIsearchField.val("");
+    });
+});
+
+//Searches For a Phone when user submits a search
 var searchBar = $("#search-bar");
 var searchField = $("#search");
 
-//Searches For a Phone when user submits a search
 searchBar.submit(function (event) {
   event.preventDefault(); // prevent default behavior of form submission
   //Get searchfield value
@@ -215,41 +264,8 @@ searchBar.submit(function (event) {
       return response.json();
     })
     .then(function (data) {
-      //console log to review data received
-      console.log(data);
       //Phone
       var phone = data.data.phones[0];
       renderPhoneList([phone]);
-
-      /*
-      var phoneName = phone.phone_name;
-      var phoneImage = phone.image;
-      var phoneBrand = phone.brand;
-      var phoneSlug = phone.slug;
-      //Search results return (brand, specs link "detail", image, phone_name)
-
-      //Calls API to get specs
-      fetch(`http://phone-specs-api.azharimm.dev/${phoneSlug}`)
-        .then(function (response) {
-          //Parses response into json
-          return response.json();
-        })
-        .then(function (data) {
-          console.log(data);
-          //phone specs
-          var phoneBrand = data.data.brand;
-          var phoneName = data.data.phone_name;
-          var releaseDate = data.data.release_date;
-          var storageOptions = data.data.storage;
-          var thumbnail = data.data.thumbnail;
-          var screenSize =
-            data.data.specifications[3].specs[1].val[0].split(",")[0];
-          var mainCamera = data.data.specifications[6].specs[0].val[0];
-          var frontCamera = data.data.specifications[7].specs[0].val[0];
-          var colorOptions = data.data.specifications[12].specs[0].val[0];
-          var phonePrice =
-            data.data.specifications[12].specs[4].val[0].split("/")[0];
-        });
-        */
     });
 });
