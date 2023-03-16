@@ -53,6 +53,14 @@ The following technologies were used to develop Peek-A-Phone:<br>
   <br>
   <br>
 
+## Collaborators
+
+Omar Zumaya - https://github.com/Omar4589 <br>
+Jesus Cardenas - https://github.com/YeaItsJesus <br>
+Adrian Acosta - https://github.com/ItzBigidy <br>
+
+
+
 ## License
 
 MIT License<br>
